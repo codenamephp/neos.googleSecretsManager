@@ -24,14 +24,9 @@
   cacheDirectory=".cache/psalm"
 >
     <projectFiles>
-        <directory name="src"/>
+        <directory name="Classes"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
-
-    <issueHandlers>
-        <MissingConstructor errorLevel="suppress"/>
-        <PropertyNotSetInConstructor errorLevel="suppress"/>
-    </issueHandlers>
 </psalm>

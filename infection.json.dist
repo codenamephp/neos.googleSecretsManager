@@ -2,11 +2,11 @@
     "timeout": 10,
     "source": {
         "directories": [
-            "src"
+            "Classes"
         ]
     },
     "phpUnit": {
-        "configDir": "test",
+        "configDir": "Tests",
         "customPath": "tools\/phpunit.phar"
     },
     "logs": {

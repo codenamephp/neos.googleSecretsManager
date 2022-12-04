@@ -17,12 +17,15 @@
 
 namespace CodenamePHP\GoogleSecretsManager;
 
-use CodenamePHP\GoogleSecretsManager\ConfigurationLoader\LoadIntoConstants;
 use CodenamePHP\GoogleSecretsManager\ConfigurationLoader\OverrideSettings;
 use Neos\Flow\Configuration\ConfigurationManager;
-use Neos\Flow\Configuration\Source\YamlSource;
 use Neos\Flow\Core\Bootstrap;
 
+/**
+ * Package bootstrap that replaces the settings loading with our wrapped version
+ *
+ * @psalm-suppress PropertyNotSetInConstructor This is a flow class and the properties are set by flow
+ */
 class Package extends \Neos\Flow\Package\Package {
 
   public function boot(Bootstrap $bootstrap) : void {

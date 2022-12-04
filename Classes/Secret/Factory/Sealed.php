@@ -15,27 +15,27 @@
  *  limitations under the License.
  */
 
-namespace CodenamePHP\GoogleSecretsManager\Secret;
+namespace CodenamePHP\GoogleSecretsManager\Secret\Factory;
 
+use CodenamePHP\GoogleSecretsManager\Secret\Secret;
 use Neos\Flow\Configuration\Exception\InvalidConfigurationException;
 
-final class Factory {
+/**
+ * A simple factory to create the sealed secret objects
+ */
+final class Sealed implements Factory {
 
   public function build(array $config) : Secret {
-    if((string) $config['name'] === '') throw new InvalidConfigurationException('Name must not be empty');
-    if((string) $config['project'] === '') throw new InvalidConfigurationException('Project must not be empty');
-    if((string) $config['path'] === '') throw new InvalidConfigurationException('Path must not be empty');
-    if((string) $config['version'] === '') throw new InvalidConfigurationException('Version must not be empty');
+    $config += ['name' => '', 'path' => '', 'project' => '', 'version' => ''];
 
-    return new Secret($config['name'], $config['project'], $config['path'], $config['version']);
+    if($config['name']  === '') throw new InvalidConfigurationException('Name must not be empty');
+    if($config['project'] === '') throw new InvalidConfigurationException('Project must not be empty');
+    if($config['path'] === '') throw new InvalidConfigurationException('Path must not be empty');
+    if($config['version'] === '') throw new InvalidConfigurationException('Version must not be empty');
+
+    return new \CodenamePHP\GoogleSecretsManager\Secret\Sealed($config['name'], $config['project'], $config['path'], $config['version']);
   }
 
-  /**
-   * @param array<string, array{path: string, name?: string, project?: string, version?: string}|string> $secrets
-   * @param string $defaultProject
-   * @return array<Secret>
-   * @throws InvalidConfigurationException
-   */
   public function buildCollection(array $secrets, string $defaultProject) : array {
     return array_map(function(array|string $secret, string $secretName) use ($defaultProject) : Secret {
       if(is_string($secret)) {

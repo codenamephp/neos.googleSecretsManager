@@ -22,6 +22,7 @@
   xmlns="https://getpsalm.org/schema/config"
   xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
   cacheDirectory=".cache/psalm"
+  errorLevel="1"
 >
     <projectFiles>
         <directory name="Classes"/>

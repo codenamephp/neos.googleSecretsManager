@@ -18,7 +18,6 @@
 namespace CodenamePHP\GoogleSecretsManager\Secret\Factory;
 
 use CodenamePHP\GoogleSecretsManager\Secret\Secret;
-use Neos\Flow\Configuration\Exception\InvalidConfigurationException;
 
 /**
  * A simple factory to create the sealed secret objects
@@ -26,13 +25,6 @@ use Neos\Flow\Configuration\Exception\InvalidConfigurationException;
 final class Sealed implements Factory {
 
   public function build(array $config) : Secret {
-    $config += ['name' => '', 'path' => '', 'project' => '', 'version' => ''];
-
-    if($config['name']  === '') throw new InvalidConfigurationException('Name must not be empty');
-    if($config['project'] === '') throw new InvalidConfigurationException('Project must not be empty');
-    if($config['path'] === '') throw new InvalidConfigurationException('Path must not be empty');
-    if($config['version'] === '') throw new InvalidConfigurationException('Version must not be empty');
-
     return new \CodenamePHP\GoogleSecretsManager\Secret\Sealed($config['name'], $config['project'], $config['path'], $config['version']);
   }
 

@@ -17,12 +17,21 @@
 
 namespace CodenamePHP\GoogleSecretsManager\Secret;
 
-/**
- * A simple readonly DTO for a secret
- */
-final class Sealed implements Secret {
+use InvalidArgumentException;
 
-  public function __construct(public readonly string $name, public readonly string $project, public readonly string $path, public readonly string $version = 'latest') {}
+/**
+ * A simple readonly value object for a secret
+ */
+final readonly class Sealed implements Secret {
+
+  public function __construct(public string $name, public string $project, public string $path, public string $version = 'latest') {
+    match (true) {
+      $name === '' => throw new InvalidArgumentException('Name must not be empty'),
+      $project === '' => throw new InvalidArgumentException('Project must not be empty'),
+      $path === '' => throw new InvalidArgumentException('Path must not be empty'),
+      default => null
+    };
+  }
 
   public function getName() : string {
     return $this->name;

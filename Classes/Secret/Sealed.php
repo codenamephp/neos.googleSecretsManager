@@ -29,6 +29,7 @@ final readonly class Sealed implements Secret {
       $name === '' => throw new InvalidArgumentException('Name must not be empty'),
       $project === '' => throw new InvalidArgumentException('Project must not be empty'),
       $path === '' => throw new InvalidArgumentException('Path must not be empty'),
+      $this->version === '' => throw new InvalidArgumentException('Version must not be empty'),
       default => null
     };
   }

@@ -24,7 +24,7 @@ interface Factory {
   /**
    * Creates a collection of secrets from the given assoc array of secrets, most likely from the settings
    *
-   * @param array<string, array{path: string, name?: string, project?: string, version?: string}|string> $secrets
+   * @param array $secrets
    * @psalm-param array<string, SecretConfig|string> $secrets
    * @param string $defaultProject The default project to use if none is given in the secret config
    * @return array<Secret>

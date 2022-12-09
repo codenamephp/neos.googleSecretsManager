@@ -2,6 +2,7 @@
 
 namespace CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory;
 
+use CodenamePHP\GoogleSecretsManager\Configuration\Configuration;
 use Google\ApiCore\ValidationException;
 use Google\Cloud\SecretManager\V1\SecretManagerServiceClient;
 
@@ -15,5 +16,5 @@ interface Factory {
    * @return SecretManagerServiceClient
    * @throws ValidationException
    */
-  public function build(array $settings) : SecretManagerServiceClient;
+  public function build(Configuration $configuration) : SecretManagerServiceClient;
 }

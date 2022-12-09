@@ -17,13 +17,14 @@
 
 namespace CodenamePHP\GoogleSecretsManager\ConfigurationLoader;
 
+use CodenamePHP\GoogleSecretsManager\Configuration\Factory\Factory as ConfigurationFactory;
+use CodenamePHP\GoogleSecretsManager\Configuration\Factory\Sealed;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\Factory as ClientFactory;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\Simple;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Version\SecretManagerServiceClientProxy;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Version\Version;
 use CodenamePHP\GoogleSecretsManager\Secret\Factory\Factory;
-use CodenamePHP\GoogleSecretsManager\Secret\Factory\Sealed;
-use Neos\Flow\Configuration\Exception\InvalidConfigurationException;
+use CodenamePHP\GoogleSecretsManager\Secret\Factory\Sealed as SecretsFactory;
 use Neos\Flow\Configuration\Loader\LoaderInterface;
 use Neos\Flow\Configuration\Loader\MergeLoader;
 use Neos\Flow\Configuration\Loader\SettingsLoader;
@@ -33,34 +34,29 @@ use Neos\Utility\Arrays;
 
 /**
  * @psalm-import-type SecretConfig from Factory
- * @psalm-type gsmSettings = array{enabled?: bool, project?: string, secrets: array<string, SecretConfig|string>, ...}
  */
 final readonly class OverrideSettings implements LoaderInterface {
 
   public const CONFIGURATION_TYPE = 'GoogleSecretsManager';
 
   public function __construct(
-    public SettingsLoader  $settingsLoader = new SettingsLoader(new YamlSource()),
-    public LoaderInterface $loader = new MergeLoader(new YamlSource(), self::CONFIGURATION_TYPE),
-    public Factory         $secretFactory = new Sealed(),
-    public ClientFactory   $clientFactory = new Simple(),
-    public Version         $version = new SecretManagerServiceClientProxy(),
+    public SettingsLoader       $settingsLoader = new SettingsLoader(new YamlSource()),
+    public LoaderInterface      $loader = new MergeLoader(new YamlSource(), self::CONFIGURATION_TYPE),
+    public ConfigurationFactory $configurationFactory = new Sealed(new SecretsFactory()),
+    public ClientFactory        $clientFactory = new Simple(),
+    public Version              $version = new SecretManagerServiceClientProxy(),
   ) {}
 
   public function load(array $packages, ApplicationContext $context) : array {
-    /** @psalm-var gsmSettings $configuration */
-    $configuration = (array) ($this->loader->load($packages, $context)['CodenamePHP']['GoogleSecretsManager'] ?? []);
+    $configuration = $this->configurationFactory->build($this->loader->load($packages, $context));
     $settings = $this->settingsLoader->load($packages, $context);
 
-    if($configuration['enabled'] ?? true) {
-      /** @var string $project */
-      $project = $configuration['project'] ?? throw new InvalidConfigurationException('CodenamePHP.GoogleSecretsManager.project is missing!');
-
+    if($configuration->isEnabled()) {
       $client = $this->clientFactory->build($configuration);
 
-      foreach($this->secretFactory->buildCollection($configuration['secrets'] ?? [], $project) as $secretConfig) {
-        $secret = $client->accessSecretVersion($this->version->secretVersionName($secretConfig));
-        $settings = (array) Arrays::setValueByPath($settings, $secretConfig->getPath(), $secret->getPayload()?->getData());
+      foreach($configuration->getSecrets() as $secret) {
+        $settings = (array) Arrays::setValueByPath($settings, $secret->getPath(),
+          $client->accessSecretVersion($this->version->secretVersionName($secret))->getPayload()?->getData());
       }
     }
     return $settings;

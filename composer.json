@@ -36,7 +36,7 @@
     }
   },
   "scripts": {
-    "create-package-symlink": "mkdir -pm777 Packages/Application && ln -sf ./../.. Packages/Application/CodenamePHP.GoogleSecretsManager",
+    "create-package-symlink": "mkdir -pm777 Packages/Application && rm Packages/Application/CodenamePHP.GoogleSecretsManager && ln -sf ./../.. Packages/Application/CodenamePHP.GoogleSecretsManager",
     "post-update-cmd": [
       "@create-package-symlink",
       "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall"
@@ -61,9 +61,10 @@
     "composer-require-checker": "XDEBUG_MODE=off tools/composer-require-checker --no-interaction",
     "infection": "XDEBUG_MODE=coverage tools/infection --min-msi=100 --min-covered-msi=100 --threads=4 --no-progress --show-mutations",
     "ci-all": [
-      "@phpunit",
+      "@phpunit:unit",
       "@psalm",
-      "@composer-unused"
+      "@composer-unused",
+      "@phpunit:functional"
     ]
   },
   "scripts-descriptions": {

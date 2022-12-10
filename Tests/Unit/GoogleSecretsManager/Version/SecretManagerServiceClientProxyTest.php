@@ -17,6 +17,6 @@ final class SecretManagerServiceClientProxyTest extends TestCase {
   }
 
   public function testSecretVersionName() : void {
-    self::assertSame('projects/path/secrets/version/versions/latest', $this->sut->secretVersionName(new Sealed('project', 'path', 'version')));
+    self::assertSame('projects/path/secrets/name/versions/latest', $this->sut->secretVersionName(new Sealed('name', 'path', 'version')));
   }
 }

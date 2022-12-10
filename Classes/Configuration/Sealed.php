@@ -4,10 +4,12 @@ namespace CodenamePHP\GoogleSecretsManager\Configuration;
 
 use CodenamePHP\GoogleSecretsManager\Secret\Secret;
 use InvalidArgumentException;
+use Neos\Flow\Annotations\Proxy;
 
 /**
  * Simple readonly value object for the configuration
  */
+#[Proxy(false)] //disable proxy as the compiled proxies really don't like to be final ... or readonly. And we don't need the proxy here anyways
 final readonly class Sealed implements Configuration {
 
   /**
@@ -22,8 +24,8 @@ final readonly class Sealed implements Configuration {
     public string $credentials = '',
     public bool   $enabled = true,
   ) {
-    match ($this->enabled) {
-      $this->project === '' => throw new InvalidArgumentException('Project must not be empty'),
+    match (true) {
+      $this->enabled && $this->project === '' => throw new InvalidArgumentException('Project must not be empty'),
       default => null,
     };
   }

@@ -27,7 +27,7 @@
     <projectFiles>
         <directory name="Classes"/>
         <ignoreFiles>
-            <directory name="vendor"/>
+            <directory name="Packages"/>
         </ignoreFiles>
     </projectFiles>
 </psalm>

@@ -1,9 +1,18 @@
 /.cache/*
 /.logs/*
 !/**/.gitkeep
+/bin
+/Build
+/Data
 /Packages
 .env
 
+/flow
+/flow.bat
+/Configuration/Testing/Settings.yaml
+/Configuration/README
+/Configuration/**/*.yaml.example
+/Web
 
 # Created by https://www.toptal.com/developers/gitignore/api/composer,phpstorm
 # Edit at https://www.toptal.com/developers/gitignore?templates=composer,phpstorm

@@ -60,6 +60,7 @@
     "composer-unused": "XDEBUG_MODE=off tools/composer-unused --no-progress --no-interaction",
     "composer-require-checker": "XDEBUG_MODE=off tools/composer-require-checker --no-interaction",
     "infection": "XDEBUG_MODE=coverage tools/infection --min-msi=100 --min-covered-msi=100 --threads=4 --no-progress --show-mutations",
+    "phive:update": "XDEBUG_MODE=off phive update && git add tools/* phive.xml && git commit tools/* -m 'Updated phive dependencies'",
     "ci-all": [
       "@phpunit:unit",
       "@psalm",
@@ -74,6 +75,7 @@
     "composer-unused": "Checks for unused composer packages",
     "composer-require-checker": "Checks for missing required composer packages",
     "infection": "Creates mutation tests to discover missing test coverage",
+    "phive:update": "Updates phive dependencies and commits them",
     "ci-all": "Runs all ci tools in sequence"
   }
 }

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CodenamePHP\GoogleSecretsManager\Tests\Configuration\Factory;
+namespace CodenamePHP\GoogleSecretsManager\Tests\Unit\Configuration\Factory;
 
 use CodenamePHP\GoogleSecretsManager\Configuration\Factory\Sealed;
 use CodenamePHP\GoogleSecretsManager\Configuration\Sealed as Configuration;

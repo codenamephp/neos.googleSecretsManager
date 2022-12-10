@@ -22,7 +22,7 @@ use CodenamePHP\GoogleSecretsManager\Secret\Secret;
 /**
  * A simple factory to create the sealed secret objects
  */
-final readonly class Sealed implements Factory {
+final class Sealed implements Factory {
 
   public function build(array $config) : Secret {
     return new \CodenamePHP\GoogleSecretsManager\Secret\Sealed($config['name'], $config['project'], $config['path'], $config['version']);

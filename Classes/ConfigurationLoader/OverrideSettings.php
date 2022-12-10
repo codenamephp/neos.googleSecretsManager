@@ -35,16 +35,16 @@ use Neos\Utility\Arrays;
 /**
  * @psalm-import-type SecretConfig from Factory
  */
-final readonly class OverrideSettings implements LoaderInterface {
+final class OverrideSettings implements LoaderInterface {
 
   public const CONFIGURATION_TYPE = 'GoogleSecretsManager';
 
   public function __construct(
-    public SettingsLoader       $settingsLoader = new SettingsLoader(new YamlSource()),
-    public LoaderInterface      $loader = new MergeLoader(new YamlSource(), self::CONFIGURATION_TYPE),
-    public ConfigurationFactory $configurationFactory = new Sealed(new SecretsFactory()),
-    public ClientFactory        $clientFactory = new SecretManagerServiceClient(),
-    public Version              $version = new SecretManagerServiceClientProxy(),
+    public readonly SettingsLoader       $settingsLoader = new SettingsLoader(new YamlSource()),
+    public readonly LoaderInterface      $loader = new MergeLoader(new YamlSource(), self::CONFIGURATION_TYPE),
+    public readonly ConfigurationFactory $configurationFactory = new Sealed(new SecretsFactory()),
+    public readonly ClientFactory        $clientFactory = new SecretManagerServiceClient(),
+    public readonly Version              $version = new SecretManagerServiceClientProxy(),
   ) {}
 
   public function load(array $packages, ApplicationContext $context) : array {

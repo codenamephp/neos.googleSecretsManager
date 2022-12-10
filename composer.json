@@ -3,7 +3,7 @@
   "type": "neos-package",
   "name": "codenamephp/googlesecretsmanager",
   "require": {
-    "php": "^8.2",
+    "php": "^8.1",
     "neos/flow": "~8.1.0 || ~8.2.0",
     "google/cloud-secret-manager": "^1.9"
   },

@@ -10,7 +10,7 @@ use Neos\Flow\Annotations\Proxy;
  * Simple readonly value object for the configuration
  */
 #[Proxy(false)] //disable proxy as the compiled proxies really don't like to be final ... or readonly. And we don't need the proxy here anyways
-final readonly class Sealed implements Configuration {
+final class Sealed implements Configuration {
 
   /**
    * @param string $project The name of the project in Google Secrets Manager
@@ -19,10 +19,10 @@ final readonly class Sealed implements Configuration {
    * @param bool $enabled Whether the configuration is enabled or not
    */
   public function __construct(
-    public string $project,
-    public array  $secrets = [],
-    public string $credentials = '',
-    public bool   $enabled = true,
+    public readonly string $project,
+    public readonly array  $secrets = [],
+    public readonly string $credentials = '',
+    public readonly bool   $enabled = true,
   ) {
     match (true) {
       $this->enabled && $this->project === '' => throw new InvalidArgumentException('Project must not be empty'),

@@ -7,7 +7,7 @@ use Google\Cloud\SecretManager\V1\SecretManagerServiceClient as GoogleClient;
 use Neos\Flow\Annotations\Proxy;
 
 #[Proxy(false)] //disable proxy as the compiled proxies really don't like to be final ... or readonly. And we don't need the proxy here anyways
-final readonly class SecretManagerServiceClient implements Factory {
+final  class SecretManagerServiceClient implements Factory {
 
   public function build(Configuration $configuration) : GoogleClient {
     defined('FLOW_PATH_ROOT') || define('FLOW_PATH_ROOT', '');

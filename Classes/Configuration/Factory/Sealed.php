@@ -11,9 +11,9 @@ use Neos\Utility\Arrays;
  *
  * @psalm-import-type GSMSettings from Factory
  */
-final readonly class Sealed implements Factory {
+final class Sealed implements Factory {
 
-  public function __construct(public \CodenamePHP\GoogleSecretsManager\Secret\Factory\Factory $secretsFactory) {}
+  public function __construct(public readonly \CodenamePHP\GoogleSecretsManager\Secret\Factory\Factory $secretsFactory) {}
 
   public function build(array $configuration, string $path = 'CodenamePHP.GoogleSecretsManager') : Configuration {
     /** @psalm-var GSMSettings $settings */

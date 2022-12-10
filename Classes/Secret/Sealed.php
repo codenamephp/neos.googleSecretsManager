@@ -24,9 +24,12 @@ use Neos\Flow\Annotations\Proxy;
  * A simple readonly value object for a secret
  */
 #[Proxy(false)] //disable proxy as the compiled proxies really don't like to be final ... or readonly. And we don't need the proxy here anyways
-final readonly class Sealed implements Secret {
+final  class Sealed implements Secret {
 
-  public function __construct(public string $name, public string $project, public string $path, public string $version = 'latest') {
+  public function __construct(public readonly string $name,
+                              public readonly string $project,
+                              public readonly string $path,
+                              public readonly string $version = 'latest') {
     match (true) {
       $name === '' => throw new InvalidArgumentException('Name must not be empty'),
       $project === '' => throw new InvalidArgumentException('Project must not be empty'),

@@ -16,7 +16,7 @@ use Neos\Flow\Annotations\Proxy;
  * @psalm-suppress all This is just a test client
  */
 #[Proxy(false)] //disable proxy as the compiled proxies really don't like to be final ... or readonly. And we don't need the proxy here anyways
-final readonly  class TestClient implements Factory {
+final class TestClient implements Factory {
 
   public function build(Configuration $configuration) : SecretManagerServiceClient {
     return new class() extends GoogleClient {

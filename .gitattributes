@@ -1,5 +1,5 @@
 /docker export-ignore
-/test export-ignore
+/Tests export-ignore
 /tools export-ignore
 /.idea export-ignore
 /.cache export-ignore

@@ -5,10 +5,13 @@
 /.github export-ignore
 /.logs export-ignore
 
+/.editorconfig export-ignore
 /.gitignore export-ignore
 /.gitattributes export-ignore
 /.env.dist
 /docker-compose.yml export-ignore
+/flow export-ignore
+/flow.bat export-ignore
 /infection.json.dist export-ignore
 /phive.xml export-ignore
 /psalm.xml export-ignore

@@ -6,10 +6,11 @@
     "php": "^8.2",
     "neos/flow": "~8.1.0 || ~8.2.0",
     "google/cloud-secret-manager": "^1.9"
-  }
-  ,
+  },
   "require-dev": {
-    "roave/security-advisories": "dev-latest"
+    "roave/security-advisories": "dev-latest",
+    "neos/buildessentials": "~8.1.0 || ~8.2.0",
+    "phpunit/phpunit": "^9.5"
   },
   "autoload": {
     "psr-4": {
@@ -25,11 +26,36 @@
     "sort-packages": true,
     "allow-plugins": {
       "neos/composer-plugin": true
+    },
+    "vendor-dir": "Packages/Libraries",
+    "bin-dir": "bin"
+  },
+  "extra": {
+    "neos": {
+      "package-key": "CodenamePHP.GoogleSecretsManager"
     }
   },
   "scripts": {
+    "create-package-symlink": "mkdir -pm777 Packages/Application && ln -sf ./../.. Packages/Application/CodenamePHP.GoogleSecretsManager",
+    "post-update-cmd": [
+      "@create-package-symlink",
+      "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall"
+    ],
+    "post-install-cmd": [
+      "@create-package-symlink",
+      "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall"
+    ],
+    "post-package-update": [
+      "@create-package-symlink",
+      "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+    ],
+    "post-package-install": [
+      "@create-package-symlink",
+      "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+    ],
     "phive-update": "XDEBUG_MODE=off phive update && git add tools/* phive.xml && git commit tools/* -m 'Updated phive dependencies'",
-    "phpunit": "XDEBUG_MODE=coverage tools/phpunit.phar -c Tests/phpunit.dist.xml Tests/",
+    "phpunit:unit": "XDEBUG_MODE=coverage bin/phpunit -c Tests/phpunit.dist.xml Tests/Unit/",
+    "phpunit:functional": "XDEBUG_MODE=coverage bin/phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml Tests/Functional/",
     "psalm": "XDEBUG_MODE=off tools/psalm --threads=10 --long-progress --no-diff",
     "composer-unused": "XDEBUG_MODE=off tools/composer-unused --no-progress --no-interaction",
     "composer-require-checker": "XDEBUG_MODE=off tools/composer-require-checker --no-interaction",

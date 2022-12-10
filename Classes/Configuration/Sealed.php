@@ -22,7 +22,7 @@ final readonly class Sealed implements Configuration {
     public string $credentials = '',
     public bool   $enabled = true,
   ) {
-    match (true) {
+    match ($this->enabled) {
       $this->project === '' => throw new InvalidArgumentException('Project must not be empty'),
       default => null,
     };

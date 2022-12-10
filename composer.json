@@ -36,7 +36,7 @@
     }
   },
   "scripts": {
-    "create-package-symlink": "mkdir -pm777 Packages/Application && rm Packages/Application/CodenamePHP.GoogleSecretsManager && ln -sf ./../.. Packages/Application/CodenamePHP.GoogleSecretsManager",
+    "create-package-symlink": "mkdir -pm777 Packages/Application && rm -f Packages/Application/CodenamePHP.GoogleSecretsManager && ln -sf ./../.. Packages/Application/CodenamePHP.GoogleSecretsManager",
     "post-update-cmd": [
       "@create-package-symlink",
       "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall"

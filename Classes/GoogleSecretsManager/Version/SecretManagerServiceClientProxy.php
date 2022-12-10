@@ -11,6 +11,6 @@ use Google\Cloud\SecretManager\V1\SecretManagerServiceClient;
 final readonly class SecretManagerServiceClientProxy implements Version {
 
   public function secretVersionName(Secret $secret) : string {
-    return SecretManagerServiceClient::secretVersionName($secret->getProject(), $secret->getPath(), $secret->getVersion());
+    return SecretManagerServiceClient::secretVersionName($secret->getProject(), $secret->getName(), $secret->getVersion());
   }
 }

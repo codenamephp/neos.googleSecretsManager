@@ -18,6 +18,8 @@
 namespace CodenamePHP\GoogleSecretsManager;
 
 use CodenamePHP\GoogleSecretsManager\ConfigurationLoader\OverrideSettings;
+use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\SecretManagerServiceClient;
+use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\TestClient;
 use Neos\Flow\Configuration\ConfigurationManager;
 use Neos\Flow\Core\Bootstrap;
 
@@ -29,8 +31,12 @@ use Neos\Flow\Core\Bootstrap;
 class Package extends \Neos\Flow\Package\Package {
 
   public function boot(Bootstrap $bootstrap) : void {
-    $bootstrap->getSignalSlotDispatcher()->connect(ConfigurationManager::class, 'configurationManagerReady', function(ConfigurationManager $configurationManager) {
-      $configurationManager->registerConfigurationType(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, new OverrideSettings());
-    });
+    $bootstrap->getSignalSlotDispatcher()
+      ->connect(ConfigurationManager::class, 'configurationManagerReady', function(ConfigurationManager $configurationManager) use ($bootstrap) {
+        $clientFactory = $bootstrap->getContext()->isTesting() ? new TestClient() : new SecretManagerServiceClient();
+        $configurationManager->registerConfigurationType(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS,
+          new OverrideSettings(clientFactory: $clientFactory)
+        );
+      });
   }
 }

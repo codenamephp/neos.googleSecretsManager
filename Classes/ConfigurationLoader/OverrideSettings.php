@@ -20,7 +20,7 @@ namespace CodenamePHP\GoogleSecretsManager\ConfigurationLoader;
 use CodenamePHP\GoogleSecretsManager\Configuration\Factory\Factory as ConfigurationFactory;
 use CodenamePHP\GoogleSecretsManager\Configuration\Factory\Sealed;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\Factory as ClientFactory;
-use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\Simple;
+use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Client\Factory\SecretManagerServiceClient;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Version\SecretManagerServiceClientProxy;
 use CodenamePHP\GoogleSecretsManager\GoogleSecretsManager\Version\Version;
 use CodenamePHP\GoogleSecretsManager\Secret\Factory\Factory;
@@ -43,7 +43,7 @@ final readonly class OverrideSettings implements LoaderInterface {
     public SettingsLoader       $settingsLoader = new SettingsLoader(new YamlSource()),
     public LoaderInterface      $loader = new MergeLoader(new YamlSource(), self::CONFIGURATION_TYPE),
     public ConfigurationFactory $configurationFactory = new Sealed(new SecretsFactory()),
-    public ClientFactory        $clientFactory = new Simple(),
+    public ClientFactory        $clientFactory = new SecretManagerServiceClient(),
     public Version              $version = new SecretManagerServiceClientProxy(),
   ) {}
 

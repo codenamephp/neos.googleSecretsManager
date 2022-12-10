@@ -18,10 +18,12 @@
 namespace CodenamePHP\GoogleSecretsManager\Secret;
 
 use InvalidArgumentException;
+use Neos\Flow\Annotations\Proxy;
 
 /**
  * A simple readonly value object for a secret
  */
+#[Proxy(false)] //disable proxy as the compiled proxies really don't like to be final ... or readonly. And we don't need the proxy here anyways
 final readonly class Sealed implements Secret {
 
   public function __construct(public string $name, public string $project, public string $path, public string $version = 'latest') {

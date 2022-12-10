@@ -8,8 +8,6 @@
 ![Packagist Downloads](https://img.shields.io/packagist/dt/codenamephp/neos.googleSecretsManager)
 ![GitHub](https://img.shields.io/github/license/codenamephp/neos.googleSecretsManager)
 
-This is currently just a proof of concept. Just ignore.
-
 ## Installation
 
 Easiest way is via composer. Just run `composer require codenamephp/neos.googleSecretsManager` in your cli which should install the latest version for you.

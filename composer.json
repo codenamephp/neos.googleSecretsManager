@@ -1,5 +1,6 @@
 {
-  "description": "",
+  "description": "Use secrets from Google Secrets Manager in NEOS CMS",
+  "license": "Apache-2.0",
   "type": "neos-package",
   "name": "codenamephp/googlesecretsmanager",
   "require": {

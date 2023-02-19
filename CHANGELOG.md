@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/codenamephp/neos.googleSecretsManager/tree/1.0.1) (2023-02-19)
+
+[Full Changelog](https://github.com/codenamephp/neos.googleSecretsManager/compare/1.0.0...1.0.1)
+
+**Merged pull requests:**
+
+- Use official phive docker image [\#5](https://github.com/codenamephp/neos.googleSecretsManager/pull/5) ([bastianschwarz](https://github.com/bastianschwarz))
+
 ## [1.0.0](https://github.com/codenamephp/neos.googleSecretsManager/tree/1.0.0) (2022-12-10)
 
 [Full Changelog](https://github.com/codenamephp/neos.googleSecretsManager/compare/c4caba1be278cec35e2becc4e1975b7ce1251dca...1.0.0)

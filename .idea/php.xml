@@ -56,7 +56,6 @@
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/diff" />
       <path value="$PROJECT_DIR$/Packages/Libraries/ramsey/uuid" />
-      <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/cli-parser" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/recursion-context" />

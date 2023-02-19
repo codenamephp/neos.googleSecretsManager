@@ -6,12 +6,12 @@
   "require": {
     "php": "^8.1",
     "neos/flow": "~8.1.0 || ~8.2.0",
-    "google/cloud-secret-manager": "^1.9"
+    "google/cloud-secret-manager": "^1.10"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
     "neos/buildessentials": "~8.1.0 || ~8.2.0",
-    "phpunit/phpunit": "^9.5"
+    "phpunit/phpunit": "^10.0.9"
   },
   "autoload": {
     "psr-4": {

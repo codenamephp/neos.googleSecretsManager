@@ -291,6 +291,9 @@
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
   <component name="PhpUnit">
     <phpunit_settings>
       <phpunit_by_interpreter interpreter_id="28d5bc83-b907-4863-8bc9-dc2573218645" configuration_file_path="/app/Tests/phpunit.dist.xml" custom_loader_path="/app/Packages/Libraries/autoload.php" phpunit_phar_path="/app/tools/phpunit.phar" use_configuration_file="true" />

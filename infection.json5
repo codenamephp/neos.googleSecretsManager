@@ -1,0 +1,19 @@
+{
+  "bootstrap": "Packages/Libraries/autoload.php",
+  "timeout": 10,
+  "source": {
+    "directories": [
+      "Classes"
+    ]
+  },
+  "phpUnit": {
+    "configDir": "Tests"
+  },
+  "testFrameworkOptions": "--testsuite=unit",
+  "logs": {
+    "text": ".logs/infection.log"
+  },
+  "mutators": {
+    "@default": true
+  }
+}

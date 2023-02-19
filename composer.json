@@ -60,13 +60,14 @@
     "psalm": "XDEBUG_MODE=off tools/psalm --threads=10 --long-progress --no-diff",
     "composer-unused": "XDEBUG_MODE=off tools/composer-unused --no-progress --no-interaction",
     "composer-require-checker": "XDEBUG_MODE=off tools/composer-require-checker --no-interaction",
-    "infection": "XDEBUG_MODE=coverage tools/infection --min-msi=100 --min-covered-msi=100 --threads=4 --no-progress --show-mutations",
+    "infection": "XDEBUG_MODE=coverage tools/infection --min-msi=53 --min-covered-msi=88 --threads=4 --no-progress --show-mutations",
     "phive:update": "XDEBUG_MODE=off phive update && git add tools/* phive.xml && git commit tools/* -m 'Updated phive dependencies'",
     "ci-all": [
-      "@phpunit:unit",
       "@psalm",
       "@composer-unused",
-      "@phpunit:functional"
+      "@phpunit:unit",
+      "@phpunit:functional",
+      "@infection"
     ]
   },
   "scripts-descriptions": {

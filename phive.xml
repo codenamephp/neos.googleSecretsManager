@@ -16,8 +16,8 @@
   ~
   -->
 <phive xmlns="https://phar.io/phive">
-  <phar name="psalm" version="^5.0" installed="5.1.0" location="./tools/psalm" copy="true"/>
+  <phar name="psalm" version="^5.0" installed="5.6.0" location="./tools/psalm" copy="true"/>
   <phar name="composer-unused" version="^0.8.5" installed="0.8.5" location="./tools/composer-unused" copy="true"/>
-  <phar name="composer-require-checker" version="^4.3" installed="4.3.0" location="./tools/composer-require-checker" copy="true"/>
-  <phar name="infection" version="^0.26" installed="0.26.16" location="./tools/infection" copy="true"/>
+  <phar name="composer-require-checker" version="^4.3" installed="4.5.0" location="./tools/composer-require-checker" copy="true"/>
+  <phar name="infection" version="^0.26" installed="0.26.19" location="./tools/infection" copy="true"/>
 </phive>

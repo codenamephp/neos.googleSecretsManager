@@ -56,7 +56,6 @@
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/diff" />
       <path value="$PROJECT_DIR$/Packages/Libraries/ramsey/uuid" />
-      <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/cli-parser" />
       <path value="$PROJECT_DIR$/Packages/Libraries/sebastian/recursion-context" />
@@ -290,6 +289,9 @@
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
   <component name="PhpUnit">
     <phpunit_settings>

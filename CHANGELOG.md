@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Fixed workflow versions to v1 [\#8](https://github.com/codenamephp/neos.googleSecretsManager/pull/8) ([bastianschwarz](https://github.com/bastianschwarz))
 - Update neos/flow requirement from ~8.1.0 || ~8.2.0 to ^8.3.0 [\#7](https://github.com/codenamephp/neos.googleSecretsManager/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Phive: Use offical docker image [\#5](https://github.com/codenamephp/neos.googleSecretsManager/pull/5) ([bastianschwarz](https://github.com/bastianschwarz))
 

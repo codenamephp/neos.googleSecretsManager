@@ -1,12 +1,13 @@
 # Changelog
 
-## [1.0.1](https://github.com/codenamephp/neos.googleSecretsManager/tree/1.0.1) (2023-02-19)
+## [1.0.1](https://github.com/codenamephp/neos.googleSecretsManager/tree/1.0.1) (2023-04-25)
 
 [Full Changelog](https://github.com/codenamephp/neos.googleSecretsManager/compare/1.0.0...1.0.1)
 
 **Merged pull requests:**
 
-- Use official phive docker image [\#5](https://github.com/codenamephp/neos.googleSecretsManager/pull/5) ([bastianschwarz](https://github.com/bastianschwarz))
+- Update neos/flow requirement from ~8.1.0 || ~8.2.0 to ^8.3.0 [\#7](https://github.com/codenamephp/neos.googleSecretsManager/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Phive: Use offical docker image [\#5](https://github.com/codenamephp/neos.googleSecretsManager/pull/5) ([bastianschwarz](https://github.com/bastianschwarz))
 
 ## [1.0.0](https://github.com/codenamephp/neos.googleSecretsManager/tree/1.0.0) (2022-12-10)
 

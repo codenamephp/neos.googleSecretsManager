@@ -5,7 +5,7 @@
   "name": "codenamephp/googlesecretsmanager",
   "require": {
     "php": "^8.1",
-    "neos/flow": "~8.1.0 || ~8.2.0",
+    "neos/flow": "^8.3.0",
     "google/cloud-secret-manager": "^1.10"
   },
   "require-dev": {

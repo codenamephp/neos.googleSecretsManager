@@ -10,7 +10,7 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
-    "neos/buildessentials": "~8.3.0",
+    "neos/buildessentials": "~9.0.0",
     "phpunit/phpunit": "^10.0.9"
   },
   "autoload": {
